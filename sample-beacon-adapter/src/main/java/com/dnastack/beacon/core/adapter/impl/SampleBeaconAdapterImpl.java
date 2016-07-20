@@ -31,13 +31,14 @@ import org.ga4gh.beacon.*;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Created by patrickmagee on 2016-06-17.
  */
 @Stateless
 public class SampleBeaconAdapterImpl extends BeaconAdapter {
-
+    public static final Logger logger = Logger.getLogger("sampleBeacon");
     public static final String API_VERSION = "0.3.0";
     public static final String BEACON_ID = "beacon_id";
     public static final String DATASET_ID = "dataset_id";
@@ -72,7 +73,7 @@ public class SampleBeaconAdapterImpl extends BeaconAdapter {
         }
         boolean exists = false;
         for (BeaconDatasetAlleleResponse datasetResponses : responses) {
-            if (datasetResponses.getExists() == true) {
+            if (datasetResponses.getExists() == Boolean.TRUE) {
                 exists = true;
             }
         }
